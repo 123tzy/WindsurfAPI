@@ -9,9 +9,9 @@ ENV NODE_ENV=production \
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends bash curl ca-certificates git\
+    && apt-get install -y --no-install-recommends bash curl ca-certificates git jq\
     && rm -rf /var/lib/apt/lists/*
-
+RUN bash install-ls.sh
 COPY package.json ./
 COPY src ./src
 COPY install-ls.sh setup.sh .env.example ./
